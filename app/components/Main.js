@@ -4,7 +4,13 @@ class Main extends React.Component {
 
     constructor(props, context) {
         super(props, context);
-        this.state = {}
+        this.state = {
+            recipes: []
+        }
+    }
+
+    addRecipe(name) {
+        localStorage[name] = name
     }
 
 }
