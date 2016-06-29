@@ -1,8 +1,8 @@
-$first: #E6E2AF;
-$second: #A7A37E;
-$mid: #EFECCA;
-$slast: #046280;
-$last: #002F2F;
+$first: #F6F792;
+$second: #333745;
+$mid: #77C4D3;
+$slast: #DAEDE2;
+$last: #EA2E49;
 $tablet-width: 768px;
 $desktop-width: 1024px;
 $share-width: 990px;
@@ -31,7 +31,7 @@ $share-width: 990px;
 body {
     margin: 0;
     padding: 0;
-    background-color: lighten($slast, 10);
+    background-color: lighten($slast, 5);
 }
 
 div#app {
@@ -44,84 +44,196 @@ div#app {
 }
 
 div#content {
-    margin-top: 40px;
+    max-width: 760px;
     width: 100%;
-    max-width: 900px;
-    min-width: 380px;
+    height: 100%;
+}
+
+div#recipes {
+    width: 100%;
     display: flex;
-    padding: 20px;
+    background-color: lighten($slast, 3);
+    margin-top: 40px;
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    p#heading {
-        width: 100%;
-        background-color: $last;
-        border-top-right-radius: 5px;
-        border-top-left-radius: 5px;
-        margin: 0;
-        padding: 10px;
-        color: white;
-        display: flex;
-        justify-content: center;
-    }
-    table > table {
-        display: flex;
-    }
-    table {
-        width: 100%;
-        flex-direction: column;
-        thead,
-        tbody {
-            width: 100%;
-        }
-        .even {
-            background-color: $mid;
-        }
-        .odd {
-            background-color: $first;
-        }
-        td {
-            border: 1px solid $second;
-        }
-        td.notactive {
-            color: $slast;
+    padding: 20px;
+}
+
+div.recipe {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    border-radius: 5px;
+    div.name {
+        position: relative;
+        p {
+            margin: 0;
+            padding: 10px;
+            background-color: lighten($mid, 20);
+            color: $second;
+            border-radius: 5px;
             cursor: pointer;
         }
-        tr {
-            width: 100%;
+        i.fa-edit {
+            position: absolute;
+            right: 10px;
+            top: 11px;
+            cursor: pointer;
+        }
+        .white {
+            background-color: white;
+            cursor: text;
+        }
+        div.action {
+            position: absolute;
             display: flex;
-            justify-content: space-around;
-            td {
+            width: 40px;
+            justify-content: space-between;
+            right: 10px;
+            top: 11px;
+            i {
+                cursor: pointer;
+            }
+        }
+    }
+    div.ingredients {
+        flex-direction: column;
+        p {
+            margin: 0;
+            padding: 16px;
+        }
+        p.tag {
+            display: flex;
+            justify-content: center;
+            padding: 16px;
+        }
+        div.items {
+            border-radius: 5px;
+        }
+        div.item {
+            position: relative;
+            &:first-child {
+                p {
+                    border-top: 1px solid lightgrey;
+                }
+            }
+            &:hover {
+                i {
+                    display: flex;
+                }
+                p {
+                    border-bottom-color: grey;
+                    border-bottom-width: 1px;
+                    border-bottom-style: solid;
+                }
+            }
+            p {
                 display: flex;
-                justify-content: center;
-                align-items: center;
-                &:nth-child(1) {
-                    width: 5%;
-                    min-width: 30px;
+                padding: 10px;
+                border: 1px solid lightgrey;
+                pointer-events: none;
+                border-top: none;
+            }
+            i {
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                cursor: pointer;
+                display: none;
+            }
+        }
+    }
+    div.main_action {
+        display: flex;
+        flex-direction: column;
+        div.newIngredient {
+            position: relative;
+            margin-top: 10px;
+            p {
+                margin: 0;
+                padding: 10px;
+                color: $second;
+                border-radius: 5px;
+                background-color: white;
+                cursor: text;
+            }
+            div.action {
+                position: absolute;
+                display: flex;
+                width: 40px;
+                justify-content: space-between;
+                right: 10px;
+                top: 11px;
+                i {
+                    cursor: pointer;
                 }
-                &:nth-child(2) {
-                    align-items: center;
-                    padding: 10px;
-                    justify-content: flex-start;
-                    width: 45%;
-                    img {
-                        height: 100%;
-                        width: 40px;
+            }
+        }
+        div.actions {
+            display: flex;
+            margin-top: 10px;
+            p {
+                margin: 0;
+                cursor: pointer;
+                padding: 10px 12px;
+                border-radius: 5px;
+                &.add {
+                    color: white;
+                    background-color: green;
+                    margin-right: 10px;
+                    i {
+                        pointer-events: none;
                     }
-                    a {
-                        text-decoration: none;
-                        color: $slast;
-                        display: flex;
-                        margin: 0;
-                        padding: 10px;
-                    }
                 }
-                &:nth-child(3) {
-                    width: 25%;
-                }
-                &:nth-child(4) {
-                    width: 25%;
+                &.delete {
+                    color: white;
+                    background-color: $last;
                 }
             }
         }
     }
+}
+
+div#addRecipe {
+    width: 100%;
+    div#input {
+        margin-top: 20px;
+        position: relative;
+        input {
+            width: 100%;
+            margin: 0;
+            padding: 10px;
+            color: $second;
+            border-radius: 5px;
+            background-color: white;
+            cursor: text;
+            border: none;
+        }
+        div.action {
+            position: absolute;
+            display: flex;
+            width: 40px;
+            justify-content: space-between;
+            right: 10px;
+            top: 11px;
+            i {
+                cursor: pointer;
+            }
+        }
+    }
+    p {
+        background-color: $second;
+        color: $slast;
+        margin: 0;
+        margin-top: 20px;
+        padding: 10px;
+        display: inline-flex;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: auto;
+    }
+}
+
+.hidden {
+    display: none !important;
 }
